@@ -15,14 +15,14 @@ st.write('The Name on your smoothie is:',name_on_order)
 
 cnx = st.connection("snowflake")
 session = cnx.session()
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit_name'),col('search_on'))
-st.dataframe(data=my_dataframe, use_container_width=True)
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
+#st.dataframe(data=my_dataframe, use_container_width=True)
 #st.stop()
 
 #convert the snowflake data frame into pandas data frame so we can use LDC function
 pd_df=my_dataframe.to_pandas()
-#st.dataframe(pd_df)
-#st.stop()
+st.dataframe(pd_df)
+st.stop()
 
 ingredients_list= st.multiselect(
     'Choose up to 5 Ingredients:'
@@ -54,7 +54,7 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
 
         st.success('Your Smoothie is ordered!:' , icon="✅")
-        st.stop()
+        
 
 
 
