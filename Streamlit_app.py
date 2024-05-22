@@ -21,8 +21,8 @@ st.stop()
 
 #convert the snowflake data frame into pandas data frame so we can use LDC function
 pd_df=my_dataframe.to_pandas()
-st.dataframe(pd_df)
-st.stop()
+#st.dataframe(pd_df)
+#st.stop()
 
 ingredients_list= st.multiselect(
     'Choose up to 5 Ingredients:'
